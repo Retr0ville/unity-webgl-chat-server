@@ -38,6 +38,7 @@ const io = new Server(httpServer, {
   // to allow cors
   cors:{
     origin:["*", "https://admin.socket.io"],
+    methods: ["GET", "POST"],
     credentials: true
   },
   // transports: ['websocket']
