@@ -37,7 +37,7 @@ var httpServer = http.createServer(app);
 const io = new Server(httpServer, {
   // to allow cors
   cors:{
-    origin:["*", "https://admin.socket.io"],
+    origin:["https://unity-webgl-chat-server.onrender.com/", "https://admin.socket.io"],
     methods: ["GET", "POST"],
     credentials: true
   },
