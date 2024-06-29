@@ -433,7 +433,7 @@ class VoiceChat {
     var url =
       window.socketServerURL === undefined ? "" : window.socketServerURL;
     // init the socket io
-    this.io = window.io(process.env.CLIENT_URL || url, { secure: true, rejectUnauthorized: false });
+    this.io = window.io("https://unity-webgl-chat-server.onrender.com/", { secure: true, rejectUnauthorized: false });
     console.log("io url", url);
 
     // initializing the Managers

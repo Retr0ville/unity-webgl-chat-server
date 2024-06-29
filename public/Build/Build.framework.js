@@ -3975,14 +3975,14 @@ function _UnityInitVoiceChatLogic(socketServerURL, clientJSFileURL) {
             ? socketServerURL 
             :
             !isLocalhost && (socketServerURL.includes('localhost') || socketServerURL.includes('127.0.0.1')) 
-            ? process.env.CLIENT_URL || ""
+            ? "https://unity-webgl-chat-server.onrender.com/"
             : socketServerURL;
 
  var socketServerClientJsUrl = isLocalhost && (clientJSFileURL.includes('localhost') || clientJSFileURL.includes('127.0.0.1') )
             ? clientJSFileURL 
             :
             !isLocalhost && (clientJSFileURL.includes('localhost') || clientJSFileURL.includes('127.0.0.1')) 
-            ? process.env.CLIENTJS_URL || ""
+            ? "https://unity-webgl-chat-server.onrender.com/"
             : clientJSFileURL;
 
  var strsocketServer = UTF8ToString(socketServerClientUrl);
