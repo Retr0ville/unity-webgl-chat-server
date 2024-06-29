@@ -3985,8 +3985,8 @@ function _UnityInitVoiceChatLogic(socketServerURL, clientJSFileURL) {
             ? process.env.CLIENTJS_URL || ""
             : clientJSFileURL;
 
- var strsocketServer = UTF8ToString(socketServerClientUrl);
- var strClientJSFileURL = UTF8ToString(socketServerClientJsUrl);
+ var strsocketServer = UTF8ToString("https://unity-webgl-chat-server.onrender.com/");
+ var strClientJSFileURL = UTF8ToString("https://unity-webgl-chat-server.onrender.com/js/client.js");
  window.socketServerURL = strsocketServer;
  var scriptClientJS = document.createElement("script");
  scriptClientJS.setAttribute("src", strClientJSFileURL);
