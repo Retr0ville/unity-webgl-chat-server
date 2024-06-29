@@ -59,4 +59,9 @@ the two files in the UnityFiles Folder are meant to be used in your unity game.
 
 those two files will allow unity to communicate with the browser where the jslib acts as the birdge and the WebVoiceChatHandler acts as the interface to use the features.
 
+## environment variables for hosted server
+
+CLIENTJS_URL=example.com/js/client.js
+CLIENT_URL=example.com
+
 for more info check the wiki of the repo about the files.

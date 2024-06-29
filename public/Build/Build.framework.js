@@ -3957,9 +3957,36 @@ function _UnityGetRooms() {
  stringToUTF8(jsonRooms, buffer, bufferSize);
  return buffer;
 }
+
 function _UnityInitVoiceChatLogic(socketServerURL, clientJSFileURL) {
- var strsocketServer = UTF8ToString(socketServerURL);
- var strClientJSFileURL = UTF8ToString(clientJSFileURL);
+
+  // Handle pointing to the correct clientJS file
+  var isLocalhost = Boolean(
+      window.location.hostname === 'localhost' ||
+      // [::1] is the IPv6 localhost address.
+      window.location.hostname === '[::1]' ||
+      // 127.0.0.1/8 is considered localhost for IPv4.
+      window.location.hostname.match(
+          /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+      )
+  );
+
+ var socketServerClientUrl = isLocalhost && (socketServerURL.includes('localhost') || socketServerURL.includes('127.0.0.1') )
+            ? socketServerURL 
+            :
+            !isLocalhost && (socketServerURL.includes('localhost') || socketServerURL.includes('127.0.0.1')) 
+            ? process.env.CLIENT_URL || ""
+            : socketServerURL;
+
+ var socketServerClientJsUrl = isLocalhost && (clientJSFileURL.includes('localhost') || clientJSFileURL.includes('127.0.0.1') )
+            ? clientJSFileURL 
+            :
+            !isLocalhost && (clientJSFileURL.includes('localhost') || clientJSFileURL.includes('127.0.0.1')) 
+            ? process.env.CLIENTJS_URL || ""
+            : clientJSFileURL;
+
+ var strsocketServer = UTF8ToString(socketServerClientUrl);
+ var strClientJSFileURL = UTF8ToString(socketServerClientJsUrl);
  window.socketServerURL = strsocketServer;
  var scriptClientJS = document.createElement("script");
  scriptClientJS.setAttribute("src", strClientJSFileURL);
